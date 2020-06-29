@@ -256,11 +256,12 @@ class HBNBCommand(cmd.Cmd):
                             elif type(getattr(modelo, lista[2])) == float:
                                 value = float(lista[3][1:-1])
                             setattr(modelo, lista[2], value)
-                            modelo.save()
-
-
-if __name__ == "__main__":
-    HBNBCommand().cmdloop()
-
-
-
+                            print("modelo.name", modelo.name)
+                            print("modelo despues de settattr", modelo.to_dict())
+                            dics[key] = modelo.to_dict()
+                            print(dics)
+                            print(modelo.to_dict())
+                            
+                            with open(FileStorage._FileStorage__file_path, mode="w", encoding='utf-8') as file:
+                                json.dump(dics, file)
+                            
