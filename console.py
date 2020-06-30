@@ -208,8 +208,8 @@ class HBNBCommand(cmd.Cmd):
 
         if cmd in cmds:
             if len(args) >= 3:
-                linea = modelo + " " + args[0][1:-1] +
-                " " + args[1][1:-1] + " " + args[2][0:-1]
+                linea = modelo + " " + args[0][1:-1]
+                + " " + args[1][1:-1] + " " + args[2][0:-1]
             elif len(args) == 2:
                 linea = modelo + " " + args[0][1:-1] + " " + args[1][1:-1]
             elif len(args) == 1:
