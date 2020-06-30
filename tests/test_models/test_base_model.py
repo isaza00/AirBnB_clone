@@ -30,11 +30,14 @@ class TestsBase(unittest.TestCase):
     def test_print(self):
         """Print ok"""
         model = BaseModel()
-        self.assertNotEqual(1, model.save())
+        id = model.id
+        my_model_json = model.to_dict()
+        self.assertEqual(my_model_json["id"], model.id)
 
     def test_print1(self):
         """Print ok"""
-        self.assertEqual(1, 1)
+        model = BaseModel()
+        self.assertNotEqual(1, model.__str__)
 
     def test_print2(self):
         """Print ok"""
