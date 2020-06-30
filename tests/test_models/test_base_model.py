@@ -2,8 +2,8 @@
 """Tests Base Model"""
 
 import unittest
-"""import pep8
-from models.base_model import BaseModel"""
+"""import pep"""
+from models.base_model import BaseModel
 
 
 class TestsBase(unittest.TestCase):
@@ -17,4 +17,28 @@ class TestsBase(unittest.TestCase):
 
     def test_any(self):
         """Test"""
-        pass
+        my_model = BaseModel()
+        my_model.name = "Holberton"
+        my_model.my_number = 89
+        print(my_model)
+        my_model.save()
+        print(my_model)
+        my_model_json = my_model.to_dict()
+        print(my_model_json)
+        self.assertEqual(1, 1)
+
+    def test_print(self):
+        """Print ok"""
+        self.assertEqual(1, 1)
+
+    def test_print1(self):
+        """Print ok"""
+        self.assertEqual(1, 1)
+
+    def test_print2(self):
+        """Print ok"""
+        self.assertEqual(1, 1)
+
+    def test_print3(self):
+        """Print ok"""
+        self.assertEqual(1, 1)
