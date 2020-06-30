@@ -30,18 +30,20 @@ class TestsBase(unittest.TestCase):
     def test_print(self):
         """Print ok"""
         model = BaseModel()
-        id = model.id
         my_model_json = model.to_dict()
         self.assertEqual(my_model_json["id"], model.id)
 
     def test_print1(self):
         """Print ok"""
         model = BaseModel()
-        self.assertNotEqual(1, model.__str__)
+        my_model_json = model.to_dict()
+        self.assertEqual(my_model_json["created_at"], model.created_at.isoformat())
 
     def test_print2(self):
         """Print ok"""
-        self.assertEqual(1, 1)
+        model = BaseModel()
+        my_model_json = model.to_dict()
+        self.assertEqual(my_model_json["updated_at"], model.updated_at.isoformat())
 
     def test_print3(self):
         """Print ok"""
