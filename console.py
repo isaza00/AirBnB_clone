@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-Write a program called console.py that contains the entry point of the command interpreter:
+Write a program called console.py
+that contains the entry point of the command interpreter:
 
     You must use the module cmd
     Your class definition must be: class HBNBCommand(cmd.Cmd):
@@ -35,15 +36,15 @@ class HBNBCommand(cmd.Cmd):
     def do_quit(self, arg):
         """Quit command to exit the program\n"""
         return True
-    
+
     def do_EOF(self, arg):
         """End of file"""
         return True
 
     def do_create(self, line):
         """
-        create: Creates a new instance of BaseModel, 
-        saves it (to the JSON file) and prints the id. 
+        create: Creates a new instance of BaseModel,
+        saves it (to the JSON file) and prints the id.
         Ex: $ create BaseModel
         If the class name is missing,
         print ** class name missing ** (ex: $ create)
@@ -51,11 +52,12 @@ class HBNBCommand(cmd.Cmd):
         print ** class doesn't exist ** (ex: $ create MyModel)
         """
         lista = line.split()
-        classes = ["User", "State", "City", "Place", "Amenity", "Review", "BaseModel"]
+        classes = ["User", "State", "City", "Place",
+                   "Amenity", "Review", "BaseModel"]
 
         if not lista:
             print("** class name missing **")
-        else:        
+        else:
             if lista[0] in classes:
                 new_model = eval(lista[0] + "()")
                 new_model.save()
@@ -65,10 +67,11 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, line):
         """
-        show: Prints the string representation of an instance based on the class name and id. 
+        show: Prints the string representation of
+        an instance based on the class name and id.
         Ex: $ show BaseModel 1234-1234-1234.
 
-        If the class name is missing,        
+        If the class name is missing,
         print ** class name missing ** (ex: $ show)
 
         If the class name doesn’t exist,
@@ -83,16 +86,16 @@ class HBNBCommand(cmd.Cmd):
         found = 0
         dics = (storage.all())
         lista = line.split()
-    
+
         if not lista:
             print("** class name missing **")
-        else:        
+        else:
             for key in dics:
                 for sub_key in dics[key]:
                     if sub_key == "__class__":
                         if dics[key][sub_key] == lista[0]:
                             found = 1
-            
+
             if found == 0:
                 print("** class doesn't exist **")
             else:
@@ -113,27 +116,34 @@ class HBNBCommand(cmd.Cmd):
                             dic_model = (dics[key])
                             model = eval(lista[0]+"(**dic_model)")
                             print(model)
+
     def do_destroy(self, line):
         """
-            destroy: Deletes an instance based on the class name and id (save the change into the JSON file). Ex: $ destroy BaseModel 1234-1234-1234.
-            If the class name is missing, print ** class name missing ** (ex: $ destroy)
-            If the class name doesn’t exist, print ** class doesn't exist ** (ex:$ destroy MyModel)
-            If the id is missing, print ** instance id missing ** (ex: $ destroy BaseModel)
-            If the instance of the class name doesn’t exist for the id, print ** no instance found ** (ex: $ destroy BaseModel 121212)
+            destroy: Deletes an instance based on the class name and id
+            (save the change into the JSON file).
+            Ex: $ destroy BaseModel 1234-1234-1234.
+            If the class name is missing, print ** class name missing **
+            (ex: $ destroy)
+            If the class name doesn’t exist, print ** class doesn't exist **
+            (ex:$ destroy MyModel)
+            If the id is missing, print ** instance id missing **
+            (ex: $ destroy BaseModel)
+            If the instance of the class name doesn’t exist for the id, print
+            ** no instance found ** (ex: $ destroy BaseModel 121212)
         """
         found = 0
         dics = (storage.all())
         lista = line.split()
-    
+
         if not lista:
             print("** class name missing **")
-        else:        
+        else:
             for key in dics:
                 for sub_key in dics[key]:
                     if sub_key == "__class__":
                         if dics[key][sub_key] == lista[0]:
                             found = 1
-            
+
             if found == 0:
                 print("** class doesn't exist **")
             else:
@@ -152,12 +162,14 @@ class HBNBCommand(cmd.Cmd):
                         key = lista[0] + "." + lista[1]
                         if key in dics:
                             dics.pop(key, None)
-                            with open(FileStorage._FileStorage__file_path, mode="w", encoding='utf-8') as file:
+                            with open(FileStorage._FileStorage__file_path,
+                                      mode="w", encoding='utf-8') as file:
                                 json.dump(dics, file)
 
     def do_all(self, line):
         """
-            all: Prints all string representation of all instances based or not on the class name. 
+            all: Prints all string representation of
+            all instances based or not on the class name.
             Ex: $ all BaseModel or $ all.
             The printed result must be a list of strings
             (like the example below)
@@ -175,14 +187,14 @@ class HBNBCommand(cmd.Cmd):
                     if sub_key == "__class__":
                         if dics[key][sub_key] == lista[0]:
                             found = 1
-        
+
         if len(lista) == 0:
             for key in dics:
                 dic_model = (dics[key])
                 model = eval(key.split(".")[0]+"(**dic_model)")
                 new_list.append(model.__str__())
             print(new_list)
-            
+
         elif found == 1:
             for key in dics:
                 dic_model = (dics[key])
@@ -190,28 +202,37 @@ class HBNBCommand(cmd.Cmd):
                     model = eval(lista[0]+"(**dic_model)")
                     new_list.append(model.__str__())
             print(new_list)
-        
+
         elif found == 0 and len(lista) > 0:
             print("** class doesn't exist **")
-    
+
     def do_update(self, line):
         """
-            update: Updates an instance based on the class name and id by adding or updating attribute (save the change into the JSON file). Ex: $ update BaseModel 1234-1234-1234 email "aibnb@holbertonschool.com".
+            update: Updates an instance based on the class name and
+            id by adding or updating attribute
+            (save the change into the JSON file).
+            Ex: $ update BaseModel 1234-1234-1234
+            email "aibnb@holbertonschool.com".
 
-            Usage: update <class name> <id> <attribute name> "<attribute value>"
+            Usage: update <class name> <id>
+            <attribute name> "<attribute value>"
             Only one attribute can be updated at the time
 
             You can assume the attribute name is valid
             (exists for this model)
-            
+
             The attribute value must be casted to the attribute type
 
             All other arguments should not be used
-            (Ex: $ update BaseModel 1234-1234-1234 email "aibnb@holbertonschool.com" first_name "Betty" = $ update BaseModel 1234-1234-1234 email "aibnb@holbertonschool.com")
+            (Ex: $ update BaseModel 1234-1234-1234
+            email "aibnb@holbertonschool.com"
+            first_name "Betty" = $ update BaseModel 1234-1234-1234
+            email "aibnb@holbertonschool.com")
             id, created_at and updated_at cant’ be updated.
             You can assume they won’t be passed in the update command
 
-            Only “simple” arguments can be updated: string, integer and float. You can assume nobody will try to update list of ids or datetime
+            Only “simple” arguments can be updated: string, integer and float.
+            You can assume nobody will try to update list of ids or datetime
         """
         found = 0
         dics = (storage.all())
@@ -219,13 +240,13 @@ class HBNBCommand(cmd.Cmd):
 
         if not lista:
             print("** class name missing **")
-        else:        
+        else:
             for key in dics:
                 for sub_key in dics[key]:
                     if sub_key == "__class__":
                         if dics[key][sub_key] == lista[0]:
                             found = 1
-            
+
             if found == 0:
                 print("** class doesn't exist **")
             else:
@@ -259,18 +280,19 @@ class HBNBCommand(cmd.Cmd):
                             modelo.save()
 
     def default(self, line):
-        cmds = {"create": self.do_create, "show": self.do_show, "all": self.do_all,
-                "destroy": self.do_destroy, "update": self.do_update }
+        cmds = {"create": self.do_create, "show": self.do_show,
+                "all": self.do_all, "destroy": self.do_destroy,
+                "update": self.do_update}
         lista = line.split(".", 1)
         modelo = lista[0]
         semi_cmd = lista[1].split("(", 1)
         cmd = semi_cmd[0]
         args = semi_cmd[1].split(", ")
-        
-        
+
         if cmd in cmds:
             if len(args) >= 3:
-                linea = modelo + " " + args[0][1:-1] + " " + args[1][1:-1] + " " + args[2][0:-1]
+                linea = modelo + " " + args[0][1:-1] +
+                " " + args[1][1:-1] + " " + args[2][0:-1]
             elif len(args) == 2:
                 linea = modelo + " " + args[0][1:-1] + " " + args[1][1:-1]
             elif len(args) == 1:
@@ -280,8 +302,8 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("*** Unknown syntax:", line)
 
+
 if __name__ == "__main__":
+    """To use the file as
+    the console itself"""
     HBNBCommand().cmdloop()
-
-
-

@@ -16,7 +16,8 @@ class BaseModel():
             for key, value in kwargs.items():
                 if key != "__class__":
                     if key == "created_at" or key == "updated_at":
-                        setattr(self, key, datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f"))
+                        setattr(self, key, datetime.strptime(value,
+                                "%Y-%m-%dT%H:%M:%S.%f"))
                     else:
                         setattr(self, key, value)
         else:
@@ -27,7 +28,7 @@ class BaseModel():
             storage.new(self)
 
     def __str__(self):
-        """Task 3 - Method to print class name, 
+        """Task 3 - Method to print class name,
         self.id and self.__dict__"""
         new_dic = {}
 
@@ -43,7 +44,7 @@ class BaseModel():
         storage.save()
 
     def to_dict(self):
-        """Task 3 - Method to return a dict 
+        """Task 3 - Method to return a dict
         with all keys/values"""
         new_dic = {}
         new_dic["__class__"] = self.__class__.__name__
@@ -55,5 +56,3 @@ class BaseModel():
                 new_dic[key] = self.__dict__[key]
 
         return new_dic
-
-

@@ -25,12 +25,12 @@ class FileStorage():
         """ save __objects dict to json file """
         with open(FileStorage.__file_path, mode="w", encoding='utf-8') as file:
             json.dump(FileStorage.__objects, file)
-    
+
     def reload(self):
         """ loads a json object from a file """
         try:
-            with open(FileStorage.__file_path, mode="r", encoding="utf-8") as file:
+            with open(FileStorage.__file_path, mode="r",
+                      encoding="utf-8") as file:
                 FileStorage.__objects = json.load(file)
-        except:
+        except IOError:
             pass
-
