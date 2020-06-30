@@ -18,6 +18,7 @@ class FileStorage():
 
     def new(self, object):
         """ sets in __objects the obj with key <obj class name>.id """
+        self.reload()
         string = object.__class__.__name__ + "." + object.id
         FileStorage.__objects[string] = object.to_dict()
 
