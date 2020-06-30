@@ -258,6 +258,27 @@ class HBNBCommand(cmd.Cmd):
                             setattr(modelo, lista[2], value)
                             modelo.save()
 
+    def default(self, line):
+        cmds = {"create": self.do_create, "show": self.do_show, "all": self.do_all,
+                "destroy": self.do_destroy, "update": self.do_update }
+        lista = line.split(".", 1)
+        modelo = lista[0]
+        semi_cmd = lista[1].split("(", 1)
+        cmd = semi_cmd[0]
+        args = semi_cmd[1].split(", ")
+        
+        
+        if cmd in cmds:
+            if len(args) >= 3:
+                linea = modelo + " " + args[0][1:-1] + " " + args[1][1:-1] + " " + args[2][0:-1]
+            elif len(args) == 2:
+                linea = modelo + " " + args[0][1:-1] + " " + args[1][1:-1]
+            elif len(args) == 1:
+                linea = modelo + " " + args[0][1:-2]
+            print(linea)
+            cmds[cmd](linea)
+        else:
+            print("*** Unknown syntax:", line)
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
