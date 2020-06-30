@@ -23,6 +23,10 @@ class HBNBCommand(cmd.Cmd):
         """Quit command to exit the program\n"""
         return True
 
+    def emptyline(self):
+        """EmptyLine\n"""
+        pass
+
     def do_EOF(self, arg):
         """End of file\n"""
         return True
