@@ -29,7 +29,8 @@ class TestsBase(unittest.TestCase):
 
     def test_print(self):
         """Print ok"""
-        self.assertEqual(1, 1)
+        model = BaseModel()
+        self.assertNotEqual(1, model.save())
 
     def test_print1(self):
         """Print ok"""
