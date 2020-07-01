@@ -46,3 +46,5 @@ class TestsBase(unittest.TestCase):
         print(dic)
         print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
         print(model)
+        self.assertNotEqual(model.to_dict(), new_model.to_dict())
+        self.assertNotEqual(model, new_model)
