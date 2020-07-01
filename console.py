@@ -202,11 +202,35 @@ class HBNBCommand(cmd.Cmd):
                             setattr(dic_classes[lista[0]], lista[2], value)
                             modelo.save()
 
+    def do_count(self, line):
+        """count number of instances\n"""
+        found = 0
+        cont = 0
+        dics = (storage.all())
+        lista = line.split()
+        classes = ["User", "State", "City", "Place",
+                   "Amenity", "Review", "BaseModel"]
+
+        if not lista:
+            print("** class name missing **")
+        else:
+            if lista[0] in classes:
+                found = 1
+
+            if found == 0:
+                print("** class doesn't exist **")
+            else:
+                for key in dics:
+                    for sub_key in dics[key]:
+                        if dics[key][sub_key] == lista[0]:
+                            cont += 1
+                print(cont)
+
     def default(self, line):
         """Method to use the "User.method" way\n"""
         cmds = {"create": self.do_create, "show": self.do_show,
                 "all": self.do_all, "destroy": self.do_destroy,
-                "update": self.do_update}
+                "update": self.do_update, "count": self.do_count}
         lista = line.split(".", 1)
         modelo = lista[0]
         semi_cmd = lista[1].split("(", 1)
