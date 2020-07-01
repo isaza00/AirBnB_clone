@@ -188,10 +188,11 @@ class HBNBCommand(cmd.Cmd):
                             dics.pop(key, None)
                             modelo = eval(lista[0]+"(**dic_model)")
                             value = lista[3][1:-1]
-                            if type(getattr(modelo, lista[2])) == int:
-                                value = int(lista[3][1:-1])
-                            elif type(getattr(modelo, lista[2])) == float:
-                                value = float(lista[3][1:-1])
+                            if getattr(modelo, lista[2], False):
+                                if type(getattr(modelo, lista[2])) == int:
+                                    value = int(lista[3][1:-1])
+                                elif type(getattr(modelo, lista[2])) == float:
+                                    value = float(lista[3][1:-1])
                             setattr(modelo, lista[2], value)
                             modelo.save()
 
