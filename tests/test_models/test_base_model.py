@@ -17,14 +17,7 @@ class TestsBase(unittest.TestCase):
 
     def test_any(self):
         """Test"""
-        my_model = BaseModel()
-        my_model.name = "Holberton"
-        my_model.my_number = 89
-        print(my_model)
-        print(my_model)
-        my_model_json = my_model.to_dict()
-        print(my_model_json)
-        self.assertEqual(1, 1)
+        pass
 
     def test_print(self):
         """Print ok"""
