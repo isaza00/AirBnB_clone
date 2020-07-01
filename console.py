@@ -156,6 +156,10 @@ class HBNBCommand(cmd.Cmd):
         lista = line.split()
         classes = ["User", "State", "City", "Place",
                    "Amenity", "Review", "BaseModel"]
+        dic_classes = {"User": User, "State": State,
+                       "City": City, "Place": Place,
+                       "Amenity": Amenity, "Review": Review,
+                       "BaseModel": BaseModel}
 
         if not lista:
             print("** class name missing **")
@@ -190,12 +194,12 @@ class HBNBCommand(cmd.Cmd):
                             value = lista[3]
                             if value[0] == "\"" and value[-1] == "\"":
                                 value = value[1:-1]
-                            if getattr(modelo, lista[2], False):
+                            if getattr(modelo, lista[2], "nohay") != "nohay":
                                 if type(getattr(modelo, lista[2])) == int:
-                                    value = int(lista[3])
+                                    value = int(value)
                                 elif type(getattr(modelo, lista[2])) == float:
-                                    value = float(lista[3])
-                            setattr(modelo, lista[2], value)
+                                    value = float(value)
+                            setattr(dic_classes[lista[0]], lista[2], value)
                             modelo.save()
 
     def default(self, line):
