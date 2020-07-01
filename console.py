@@ -187,12 +187,14 @@ class HBNBCommand(cmd.Cmd):
                             dic_model = dics[key]
                             dics.pop(key, None)
                             modelo = eval(lista[0]+"(**dic_model)")
-                            value = lista[3][1:-1]
+                            value = lista[3]
+                            if value[0] == "\"" and value[-1] == "\"":
+                                value = value[1:-1]
                             if getattr(modelo, lista[2], False):
                                 if type(getattr(modelo, lista[2])) == int:
-                                    value = int(lista[3][1:-1])
+                                    value = int(lista[3])
                                 elif type(getattr(modelo, lista[2])) == float:
-                                    value = float(lista[3][1:-1])
+                                    value = float(lista[3])
                             setattr(modelo, lista[2], value)
                             modelo.save()
 
@@ -215,7 +217,6 @@ class HBNBCommand(cmd.Cmd):
                 linea = modelo + " " + args[0][1:-1] + " " + args[1][1:-1]
             elif len(args) == 1:
                 linea = modelo + " " + args[0][1:-2]
-            print(linea)
             cmds[cmd](linea)
         else:
             print("*** Unknown syntax:", line)
