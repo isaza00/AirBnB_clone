@@ -10,13 +10,8 @@ import os
 class TestsBase(unittest.TestCase):
     """Class to test the Base cases"""
 
-    """def test_pep8_conformance(self):
-        Test that we conform to PEP8.
-        pep8style = pep8.StyleGuide(quiet=True)
-        result = pep8style.check_files(['./models/base_model.py'])
-        self.assertEqual(result.total_errors, 0)"""
-
-    """def test_any(self):
+    def test_any(self):
+        """Test"""
         model = BaseModel()
         str1 = "[BaseModel] "
         str2 = "(" + model.id + ") "
@@ -25,24 +20,25 @@ class TestsBase(unittest.TestCase):
         self.assertEqual(model.__str__(), string)
 
     def test_print(self):
+        """Print ok"""
         model = BaseModel()
         my_model_json = model.to_dict()
         self.assertEqual(my_model_json["id"], model.id)
 
     def test_print1(self):
+        """Print ok"""
         model = BaseModel()
         my_model_json = model.to_dict()
         self.assertEqual(my_model_json["created_at"], model.created_at.isoformat())
 
     def test_print2(self):
+        """Print ok"""
         model = BaseModel()
         my_model_json = model.to_dict()
         self.assertEqual(my_model_json["updated_at"], model.updated_at.isoformat())
-    """
-    
+
     def test_print3(self):
         """Print ok"""
-        
         model = BaseModel()
         model.save()
         dic = storage.all()
