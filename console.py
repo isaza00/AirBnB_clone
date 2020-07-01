@@ -52,15 +52,14 @@ class HBNBCommand(cmd.Cmd):
         found = 0
         dics = (storage.all())
         lista = line.split()
+        classes = ["User", "State", "City", "Place",
+                   "Amenity", "Review", "BaseModel"]
 
         if not lista:
             print("** class name missing **")
         else:
-            for key in dics:
-                for sub_key in dics[key]:
-                    if sub_key == "__class__":
-                        if dics[key][sub_key] == lista[0]:
-                            found = 1
+            if lista[0] in classes:
+                found = 1
 
             if found == 0:
                 print("** class doesn't exist **")
@@ -88,15 +87,14 @@ class HBNBCommand(cmd.Cmd):
         found = 0
         dics = (storage.all())
         lista = line.split()
+        classes = ["User", "State", "City", "Place",
+                   "Amenity", "Review", "BaseModel"]
 
         if not lista:
             print("** class name missing **")
         else:
-            for key in dics:
-                for sub_key in dics[key]:
-                    if sub_key == "__class__":
-                        if dics[key][sub_key] == lista[0]:
-                            found = 1
+            if lista[0] in classes:
+                found = 1
 
             if found == 0:
                 print("** class doesn't exist **")
@@ -126,13 +124,12 @@ class HBNBCommand(cmd.Cmd):
         dics = (storage.all())
         lista = line.split()
         new_list = []
+        classes = ["User", "State", "City", "Place",
+                   "Amenity", "Review", "BaseModel"]
 
         if len(lista) > 0:
-            for key in dics:
-                for sub_key in dics[key]:
-                    if sub_key == "__class__":
-                        if dics[key][sub_key] == lista[0]:
-                            found = 1
+            if lista[0] in classes:
+                found = 1
 
         if len(lista) == 0:
             for key in dics:
@@ -157,15 +154,14 @@ class HBNBCommand(cmd.Cmd):
         found = 0
         dics = (storage.all())
         lista = line.split()
+        classes = ["User", "State", "City", "Place",
+                   "Amenity", "Review", "BaseModel"]
 
         if not lista:
             print("** class name missing **")
         else:
-            for key in dics:
-                for sub_key in dics[key]:
-                    if sub_key == "__class__":
-                        if dics[key][sub_key] == lista[0]:
-                            found = 1
+            if lista[0] in classes:
+                found = 1
 
             if found == 0:
                 print("** class doesn't exist **")
