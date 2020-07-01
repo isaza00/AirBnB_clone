@@ -39,4 +39,10 @@ class TestsBase(unittest.TestCase):
 
     def test_print3(self):
         """Print ok"""
-        pass
+        model = BaseModel()
+        model.save()
+        dic = storage.all()
+        print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+        print(dic)
+        print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+        print(model)
