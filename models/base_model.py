@@ -46,7 +46,9 @@ class BaseModel():
         """Task 3 - Method to return a dict
         with all keys/values"""
         new_dic = {}
-        members = [attr for attr in dir(self) if not callable(getattr(self, attr)) and not attr.startswith("__")]
+        members = [attr for attr in dir(self)
+                   if not callable(getattr(self, attr)) and not
+                   attr.startswith("__")]
         new_dic["__class__"] = self.__class__.__name__
 
         for key in self.__dict__:

@@ -23,7 +23,7 @@ class FileStorage():
         FileStorage.__objects[string] = object.to_dict()
 
     def save(self):
-        """ save __objects dict to json file """        
+        """ save __objects dict to json file """
         with open(FileStorage.__file_path, mode="w", encoding='utf-8') as file:
             json.dump(FileStorage.__objects, file)
         FileStorage.__objects = {}

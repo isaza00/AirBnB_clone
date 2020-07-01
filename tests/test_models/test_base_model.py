@@ -29,22 +29,20 @@ class TestsBase(unittest.TestCase):
         """Print ok"""
         model = BaseModel()
         my_model_json = model.to_dict()
-        self.assertEqual(my_model_json["created_at"], model.created_at.isoformat())
+        self.assertEqual(my_model_json["created_at"],
+                         model.created_at.isoformat())
 
     def test_print2(self):
         """Print ok"""
         model = BaseModel()
         my_model_json = model.to_dict()
-        self.assertEqual(my_model_json["updated_at"], model.updated_at.isoformat())
+        self.assertEqual(my_model_json["updated_at"],
+                         model.updated_at.isoformat())
 
     def test_print3(self):
         """Print ok"""
         model = BaseModel()
         model.save()
         dic = storage.all()
-        print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-        print(dic)
-        print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-        print(model)
         self.assertNotEqual(model.to_dict(), new_model.to_dict())
         self.assertNotEqual(model, new_model)
