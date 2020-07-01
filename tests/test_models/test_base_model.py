@@ -17,7 +17,12 @@ class TestsBase(unittest.TestCase):
 
     def test_any(self):
         """Test"""
-        pass
+        model = BaseModel()
+        str1 = "[BaseModel] "
+        str2 = "(" + model.id + ") "
+        str3 = str(model.__dict__)
+        string = str1 + str2 + str3
+        self.assertEqual(model.__str__(), string)
 
     def test_print(self):
         """Print ok"""
