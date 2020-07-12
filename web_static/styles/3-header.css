@@ -1,0 +1,20 @@
+header {
+	background-color: white;
+	border-bottom: 1px solid #CCCCCC;
+	height: 70px;
+	width: 100%;
+	background-image: url("../images/logo.png");
+	background-repeat: no-repeat;
+	background-position: 20px;
+}
+/* in case of use a div to contain logo. add a div on header 
+	and change background-position on header to left.
+header div {
+	height: 100%;
+	width: 100%;
+	background-image: url("../images/logo.png");
+	background-repeat: no-repeat;
+	background-position: left;
+	margin-left: 20px;
+}
+*/

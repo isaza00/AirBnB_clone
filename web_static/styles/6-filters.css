@@ -1,0 +1,90 @@
+/* search div */
+.filters {
+	background-color: white;
+	height: 70px;
+	width: 100%;
+	border: 1px solid #DDDDDD;
+	border-radius: 4px;
+	vertical-align: middle;
+	position: relative;
+}
+/* Button of search div */
+.filters > button {
+	display: inline-block;
+	background-color: #FF5A5F;
+	color: #FFFFFF;
+	height: 48px;
+	width: 20%;
+	border: 0px;
+	border-radius: 4px;
+	position: absolute;
+	right: 30px;
+	left: auto;
+	top: 11px;
+}
+.filters > button:hover {
+	background-color: rgba(255, 90, 95, .9);
+}
+.locations, .amenity {
+	display: inline-block;
+	height: 100%;
+	width: 25%;
+	vertical-align: middle;
+	box-sizing: border-box;
+}
+.locations {
+	border-right: 1px solid #DDDDDD;
+}
+.locations h3, .amenity h3 {
+	font-weight: 600px;
+	margin-bottom: 0px;
+	padding-left: 50px;
+}
+.locations h4, .amenity h4 {
+	font-weight: 400px;
+	font-size: 14px;
+	margin-top: 0px;
+	padding-left: 50px;
+}
+.locations > ul, .amenity > ul {
+	padding-top: 20px;
+	box-sizing: border-box;
+	padding-bottom: 20px;
+	width: 100%;
+}
+.locations > ul ul {
+	padding-left: 35px;
+	padding-bottom: 20px;
+}
+.locations > ul {
+	padding-left: 15px;
+	margin-right: 15px;
+}
+.amenity > ul {
+	padding-left: 50px;
+}
+.locations:hover .popover {
+	visibility: visible;
+}
+.amenity:hover .popover {
+	visibility: visible;
+}
+.popover {
+	visibility: hidden;
+	background-color: #FAFAFA;
+	border:1px solid #DDDDDD;
+	border-radius: 4px;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	vertical-align: middle;
+	z-index: 10;
+}
+.popover li {
+	list-style-type: none;
+	padding: 1px 0px;
+}
+.popover h2 {
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
